@@ -1,0 +1,87 @@
+/*
+ * WCP TOKEN DEFAULTS — :root CSS custom property seed block
+ *
+ * Place this inside a <style> tag in the <head> of your SPA.
+ * These are fallback values; any imported theme overrides them by
+ * setting the same properties on document.documentElement via JS.
+ *
+ * Token set: WCP 2.2.1 (subset — colours, typography, spacing, shape,
+ * shadow, motion, z-index used by the settings modal itself).
+ *
+ * Customise --wcp-color-primary / --wcp-color-primary-on for your brand.
+ */
+
+:root {
+  /* Surfaces */
+  --wcp-color-bg: #ffffff;
+  --wcp-color-surface: #f8fafc;
+  --wcp-color-surface-raised: #f1f5f9;
+  --wcp-color-surface-sunken: #ffffff;
+  --wcp-color-overlay: rgba(15,23,42,0.6);
+
+  /* Borders */
+  --wcp-color-border: #e2e8f0;
+  --wcp-color-border-strong: rgba(15,23,42,0.15);
+
+  /* Text */
+  --wcp-color-text: #0f172a;
+  --wcp-color-text-muted: #475569;
+  --wcp-color-text-disabled: rgba(71,85,105,0.5);
+  --wcp-color-text-inverse: #ffffff;
+  --wcp-color-link: #0969da;
+
+  /* Brand — replace with your primary colour (WCAG AA required) */
+  --wcp-color-primary: #8B6914;
+  --wcp-color-primary-dim: rgba(139,105,20,0.12);
+  --wcp-color-primary-on: #ffffff;
+
+  /* Status */
+  --wcp-color-success: #1a7f37;
+  --wcp-color-success-on: #ffffff;
+  --wcp-color-success-surface: rgba(26,127,55,0.10);
+  --wcp-color-warning: #9a6700;
+  --wcp-color-warning-surface: rgba(154,103,0,0.10);
+  --wcp-color-danger: #cf222e;
+  --wcp-color-danger-surface: rgba(207,34,46,0.10);
+  --wcp-color-info: #0969da;
+  --wcp-color-info-surface: rgba(9,105,218,0.10);
+
+  /* Typography */
+  --wcp-font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --wcp-font-mono: ui-monospace,'SF Mono','Fira Code',monospace;
+  --wcp-font-size-xs: 0.70rem;
+  --wcp-font-size-sm: 0.80rem;
+  --wcp-font-size-md: 0.875rem;
+  --wcp-font-size-lg: 1rem;
+  --wcp-font-size-xl: 1.125rem;
+  --wcp-font-size-2xl: 1.25rem;
+  --wcp-font-size-3xl: 1.5rem;
+  --wcp-font-weight-normal: 400;
+  --wcp-font-weight-medium: 500;
+  --wcp-font-weight-semibold: 600;
+  --wcp-font-weight-bold: 700;
+  --wcp-line-height-tight: 1.2;
+  --wcp-line-height-normal: 1.5;
+  --wcp-line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --wcp-space-1: 4px;
+  --wcp-space-2: 8px;
+  --wcp-space-3: 12px;
+  --wcp-space-4: 16px;
+  --wcp-space-5: 24px;
+
+  /* Shape */
+  --wcp-radius-sm: 4px;
+  --wcp-radius-md: 8px;
+  --wcp-radius-xl: 16px;
+
+  /* Shadow */
+  --wcp-shadow-xl: 0 16px 40px rgba(0,0,0,.14);
+
+  /* Motion */
+  --wcp-duration-fast: 100ms;
+
+  /* Z-index */
+  --wcp-z-modal: 1200;
+}

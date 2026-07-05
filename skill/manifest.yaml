@@ -1,21 +1,44 @@
 name: WCP SPA Theme Settings
 id: com.penrithbeacon.wcp-spa-theme-settings
 uuid: 515af161-bbcc-4170-a376-7b8f74480849
-version: 1.0.0
+version: 1.3.2
 description: Embed WCP theme switching (Settings modal, .wcpt import, URL sharing, seasonal collections) into any WCP-compliant SPA
 author: Anthony Harrison
 authorEmail: anthony@harrisonofthenorth.com
 entry: SKILL.md
 license: MIT
 minimum_runtime: "1.0.0"
+wcpVersion: "2.2.1"
 capabilities:
   - filesystem.read
   - filesystem.write
 homepage: https://openaiskillpackage.com/
 repository: https://github.com/PenrithBeacon/AISKILL-WCP-SPA-THEME-SETTINGS
-tags: [wcp, spa, theme, settings]
+tags:
+  - wcp
+  - theme
+  - spa
+  - settings-modal
+  - collections
 type: procedural
 changelog:
-  - version: 1.0.0
+  - version: 1.3.2
     changes:
-      - Initial release
+      - Current shipped state as recovered from the .aiskill archive -- specific changes since
+        1.3.1 were not documented anywhere recoverable at retrofit time
+  - version: 1.3.1
+    changes:
+      - Fix WCP_BUILTIN_THEMES exposed as window.WCP_BUILTIN_THEMES so the URL export IIFE can access it
+      - Fix loadSeasonalThemes .catch no longer re-firing the callback if render threw
+      - Add 4 seasonal .wcpt files bundled in assets/collections/ -- no longer sourced externally
+      - Update Step 11 to reference bundled files with exact IDs and filenames
+  - version: 1.3.0
+    changes:
+      - Add theme collections dropdown (My Themes, seasonal, user-imported)
+      - Add URL export panel with shareable theme query string
+      - Add URL export info modal
+      - Add AI Skill PKG tab
+  - version: 1.0.0-1.2.0
+    changes:
+      - Initial releases -- individual version changes not preserved, collapsed range as
+        recorded in the shipped package's own README at retrofit time

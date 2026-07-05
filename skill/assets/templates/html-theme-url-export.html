@@ -1,0 +1,67 @@
+<!--
+  WCP THEME URL EXPORT PANEL — inline HTML fragment for the Theme pane
+
+  Place inside the Theme pane (wcp-pane-theme), between the theme list div
+  and the wizard div. It is shown/hidden by wcpRenderExportPanel() in
+  js-theme-url-export.js — hidden when Built-in (default) is selected,
+  visible when any named theme is active.
+
+  CSS: uses existing wcp-theme-panel classes (css-theme-modal-panel.css)
+  JS:  js-theme-url-export.js
+-->
+<div class="wcp-url-export" id="wcp-url-export" style="display:none;">
+  <div style="padding:0.6rem var(--wcp-space-5) 0;border-top:1px solid var(--wcp-color-border);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
+      <div style="font-size:var(--wcp-font-size-xs);font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--wcp-color-text-muted);">Share this theme via URL</div>
+      <button class="wcp-info-btn" onclick="wcpOpenUrlExportInfo()" aria-label="About sharing themes via URL" title="How does this work?" style="margin-left:0.5rem;flex-shrink:0;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </button>
+    </div>
+    <!-- Full query string row -->
+    <div style="margin-bottom:0.45rem;">
+      <div style="font-size:var(--wcp-font-size-xs);color:var(--wcp-color-text-muted);margin-bottom:0.2rem;">
+        Full query string <span style="opacity:.65;">(URL has no existing parameters)</span>
+      </div>
+      <div style="display:flex;align-items:stretch;gap:0.35rem;">
+        <div id="wcp-export-full"
+             style="flex:1;font-family:var(--wcp-font-mono);font-size:0.63rem;
+                    background:var(--wcp-color-surface);border:1px solid var(--wcp-color-border);
+                    border-radius:var(--wcp-radius-sm);padding:5px 8px;overflow:hidden;
+                    white-space:nowrap;text-overflow:ellipsis;color:var(--wcp-color-text-muted);
+                    cursor:default;user-select:all;line-height:1.4;"></div>
+        <button onclick="wcpCopyExportUrl('full')" title="Copy full query string"
+                style="flex-shrink:0;background:var(--wcp-color-surface-raised);
+                       border:1px solid var(--wcp-color-border);color:var(--wcp-color-text-muted);
+                       border-radius:var(--wcp-radius-sm);padding:4px 8px;cursor:pointer;
+                       font-size:var(--wcp-font-size-xs);white-space:nowrap;
+                       transition:all var(--wcp-duration-fast);"
+                id="wcp-copy-full-btn"
+                onmouseover="this.style.borderColor='var(--wcp-color-primary)';this.style.color='var(--wcp-color-text)'"
+                onmouseout="this.style.borderColor='var(--wcp-color-border)';this.style.color='var(--wcp-color-text-muted)'">Copy</button>
+      </div>
+    </div>
+    <!-- Parameter only row -->
+    <div style="margin-bottom:0.6rem;">
+      <div style="font-size:var(--wcp-font-size-xs);color:var(--wcp-color-text-muted);margin-bottom:0.2rem;">
+        Parameter only <span style="opacity:.65;">(URL already has parameters)</span>
+      </div>
+      <div style="display:flex;align-items:stretch;gap:0.35rem;">
+        <div id="wcp-export-param"
+             style="flex:1;font-family:var(--wcp-font-mono);font-size:0.63rem;
+                    background:var(--wcp-color-surface);border:1px solid var(--wcp-color-border);
+                    border-radius:var(--wcp-radius-sm);padding:5px 8px;overflow:hidden;
+                    white-space:nowrap;text-overflow:ellipsis;color:var(--wcp-color-text-muted);
+                    cursor:default;user-select:all;line-height:1.4;"></div>
+        <button onclick="wcpCopyExportUrl('param')" title="Copy parameter"
+                style="flex-shrink:0;background:var(--wcp-color-surface-raised);
+                       border:1px solid var(--wcp-color-border);color:var(--wcp-color-text-muted);
+                       border-radius:var(--wcp-radius-sm);padding:4px 8px;cursor:pointer;
+                       font-size:var(--wcp-font-size-xs);white-space:nowrap;
+                       transition:all var(--wcp-duration-fast);"
+                id="wcp-copy-param-btn"
+                onmouseover="this.style.borderColor='var(--wcp-color-primary)';this.style.color='var(--wcp-color-text)'"
+                onmouseout="this.style.borderColor='var(--wcp-color-border)';this.style.color='var(--wcp-color-text-muted)'">Copy</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,293 @@
+/*
+ * WCP SETTINGS MODAL — panel, tabs, theme list, wizard, and badge CSS
+ *
+ * Depends on: css-wcp-token-defaults.css (or equivalent :root block)
+ * HTML counterpart: html-settings-modal.html
+ * JS counterpart: js-theme-modal-controller.js
+ *
+ * The panel has three tabs: Theme (radio list + .wcpt import wizard),
+ * About (SPA description), and WCP (protocol overview with links).
+ * The WCP badge strip at the bottom is mandatory for WCP-compliant SPAs.
+ */
+
+/* ── Backdrop ──────────────────────────────────────────────────────────────── */
+.wcp-theme-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: var(--wcp-color-overlay);
+  z-index: var(--wcp-z-modal);
+  align-items: center; justify-content: center;
+}
+.wcp-theme-backdrop.open { display: flex; }
+
+/* ── Panel shell ───────────────────────────────────────────────────────────── */
+.wcp-theme-panel {
+  background: var(--wcp-color-bg);
+  border: 1px solid var(--wcp-color-border);
+  border-radius: var(--wcp-radius-xl);
+  box-shadow: var(--wcp-shadow-xl);
+  width: 420px; max-width: 95vw;
+  display: flex; flex-direction: column;
+  max-height: 85vh; overflow: hidden;
+}
+.wcp-theme-panel-header {
+  padding: var(--wcp-space-4) var(--wcp-space-5);
+  border-bottom: 1px solid var(--wcp-color-border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.wcp-theme-panel-header h3 {
+  font-size: var(--wcp-font-size-lg); font-weight: 600; color: var(--wcp-color-text);
+}
+.wcp-theme-close {
+  background: none; border: none; cursor: pointer;
+  color: var(--wcp-color-text-muted); font-size: 20px; line-height: 1;
+  padding: 2px 6px; border-radius: var(--wcp-radius-sm);
+  transition: color var(--wcp-duration-fast);
+}
+.wcp-theme-close:hover { color: var(--wcp-color-text); }
+
+/* ── Tabs ──────────────────────────────────────────────────────────────────── */
+.wcp-settings-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--wcp-color-border);
+  padding: 0 var(--wcp-space-5);
+  background: var(--wcp-color-bg);
+  flex-shrink: 0;
+}
+.wcp-settings-tab {
+  padding: 9px 16px;
+  background: none; border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  font-size: var(--wcp-font-size-sm); font-weight: 500;
+  color: var(--wcp-color-text-muted);
+  transition: color var(--wcp-duration-fast), border-color var(--wcp-duration-fast);
+}
+.wcp-settings-tab:hover { color: var(--wcp-color-text); }
+.wcp-settings-tab.active {
+  color: var(--wcp-color-primary);
+  border-bottom-color: var(--wcp-color-primary);
+}
+.wcp-settings-pane { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+.wcp-settings-pane.hidden { display: none; }
+
+/* ── Theme list (radio rows) ───────────────────────────────────────────────── */
+.wcp-theme-list {
+  padding: var(--wcp-space-3);
+  overflow-y: auto; flex: 1;
+  display: flex; flex-direction: column; gap: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--wcp-color-primary) var(--wcp-color-surface);
+}
+.wcp-theme-list::-webkit-scrollbar { width: 5px; }
+.wcp-theme-list::-webkit-scrollbar-track { background: var(--wcp-color-surface); }
+.wcp-theme-list::-webkit-scrollbar-thumb { background: var(--wcp-color-primary); border-radius: 3px; }
+
+.wcp-theme-item {
+  display: flex; align-items: center; gap: var(--wcp-space-3);
+  padding: 10px var(--wcp-space-3);
+  border-radius: var(--wcp-radius-md);
+  cursor: pointer;
+  transition: background var(--wcp-duration-fast);
+}
+.wcp-theme-item:hover { background: var(--wcp-color-surface); }
+.wcp-theme-item input[type=radio] {
+  accent-color: var(--wcp-color-primary);
+  width: 16px; height: 16px; flex-shrink: 0; cursor: pointer;
+}
+.wcp-theme-item label {
+  font-size: var(--wcp-font-size-md); color: var(--wcp-color-text);
+  cursor: pointer; line-height: 1.3; flex: 1;
+}
+.wcp-theme-builtin {
+  display: block;
+  font-size: var(--wcp-font-size-xs);
+  color: var(--wcp-color-text-muted); font-weight: 400;
+}
+.wcp-theme-delete {
+  margin-left: auto; background: none; border: none; cursor: pointer;
+  color: var(--wcp-color-text-muted); font-size: 18px;
+  padding: 2px 6px; border-radius: var(--wcp-radius-sm);
+  transition: color var(--wcp-duration-fast), background var(--wcp-duration-fast);
+  flex-shrink: 0;
+}
+.wcp-theme-delete:hover { color: var(--wcp-color-danger); background: var(--wcp-color-danger-surface); }
+
+/* ── Panel footer + buttons ────────────────────────────────────────────────── */
+.wcp-theme-panel-footer {
+  padding: var(--wcp-space-3) var(--wcp-space-5);
+  border-top: 1px solid var(--wcp-color-border);
+  display: flex; justify-content: space-between; align-items: center; gap: var(--wcp-space-2);
+}
+.wcp-theme-btn {
+  padding: 7px 16px; border-radius: var(--wcp-radius-md);
+  font-size: var(--wcp-font-size-sm); font-weight: 500;
+  border: none; cursor: pointer; transition: all var(--wcp-duration-fast);
+}
+.wcp-theme-btn-secondary {
+  background: var(--wcp-color-surface-raised);
+  color: var(--wcp-color-text);
+  border: 1px solid var(--wcp-color-border);
+}
+.wcp-theme-btn-secondary:hover { background: var(--wcp-color-surface); }
+.wcp-theme-btn-primary {
+  background: var(--wcp-color-primary); color: var(--wcp-color-primary-on);
+}
+.wcp-theme-btn-primary:hover {
+  background: color-mix(in srgb, var(--wcp-color-primary) 88%, black);
+}
+.wcp-theme-btn-primary:disabled { opacity: 0.42; cursor: not-allowed; }
+.wcp-theme-btn-primary:disabled:hover { background: var(--wcp-color-primary); }
+
+/* ── Error message strip ───────────────────────────────────────────────────── */
+.wcp-theme-error {
+  display: none;
+  margin: var(--wcp-space-3) var(--wcp-space-5) 0;
+  padding: var(--wcp-space-2) var(--wcp-space-3);
+  background: var(--wcp-color-danger-surface); color: var(--wcp-color-danger);
+  border-radius: var(--wcp-radius-md); font-size: var(--wcp-font-size-sm);
+}
+
+/* ── .wcpt import wizard ───────────────────────────────────────────────────── */
+.wcp-theme-wizard {
+  display: none;
+  padding: var(--wcp-space-3) var(--wcp-space-5) var(--wcp-space-4);
+  border-top: 1px solid var(--wcp-color-border);
+  flex-direction: column; gap: var(--wcp-space-2);
+}
+.wcp-theme-wizard.open { display: flex; }
+.wcp-theme-wizard label {
+  font-size: var(--wcp-font-size-sm); font-weight: 500; color: var(--wcp-color-text);
+}
+.wcp-theme-wizard input[type=file] {
+  font-size: var(--wcp-font-size-sm); color: var(--wcp-color-text);
+  background: var(--wcp-color-surface); border: 1px solid var(--wcp-color-border);
+  border-radius: var(--wcp-radius-md); padding: 6px 10px; width: 100%; cursor: pointer;
+}
+.wcp-theme-wizard-actions {
+  display: flex; gap: var(--wcp-space-2); justify-content: flex-end;
+  margin-top: var(--wcp-space-1);
+}
+.wcp-wizard-label-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.wcp-info-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--wcp-color-text-muted);
+  padding: 2px 4px; border-radius: var(--wcp-radius-sm);
+  display: flex; align-items: center; flex-shrink: 0;
+  transition: color var(--wcp-duration-fast);
+  line-height: 0;
+}
+.wcp-info-btn:hover { color: var(--wcp-color-primary); }
+
+/* ── About / WCP pane shared styles ───────────────────────────────────────── */
+.wcp-about-body {
+  padding: 1rem 1.25rem;
+  overflow-y: auto; flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--wcp-color-primary) var(--wcp-color-surface);
+}
+.wcp-about-body::-webkit-scrollbar { width: 5px; }
+.wcp-about-body::-webkit-scrollbar-track { background: var(--wcp-color-surface); }
+.wcp-about-body::-webkit-scrollbar-thumb { background: var(--wcp-color-primary); border-radius: 3px; }
+.wcp-about-section { margin-bottom: 1.4rem; }
+.wcp-about-section:last-child { margin-bottom: 0; }
+.wcp-about-section h4 {
+  font-family: inherit;
+  font-size: var(--wcp-font-size-3xl);
+  font-weight: var(--wcp-font-weight-bold);
+  line-height: var(--wcp-line-height-tight);
+  color: var(--wcp-color-text); margin: 0 0 0.5rem;
+}
+.wcp-about-section p {
+  font-size: var(--wcp-font-size-sm); color: var(--wcp-color-text);
+  line-height: 1.65; margin: 0 0 0.55rem;
+}
+.wcp-about-section p:last-child { margin-bottom: 0; }
+.wcp-about-section a { color: var(--wcp-color-primary); }
+.wcp-about-meta { font-size: 0.72rem; color: var(--wcp-color-text-muted); line-height: 1.6; margin: 0; }
+.wcp-subsection-h {
+  font-family: inherit;
+  font-size: var(--wcp-font-size-2xl);
+  font-weight: var(--wcp-font-weight-bold);
+  line-height: var(--wcp-line-height-tight);
+  color: var(--wcp-color-text); margin: 0 0 0.4rem;
+}
+.wcp-subsection-link {
+  display: inline-block;
+  font-size: var(--wcp-font-size-sm);
+  color: var(--wcp-color-primary);
+  margin-top: 0.3rem;
+}
+.wcp-callout {
+  font-size: var(--wcp-font-size-sm);
+  font-style: italic;
+  color: var(--wcp-color-text-muted);
+  line-height: 1.65;
+  border-left: 3px solid var(--wcp-color-primary);
+  background: var(--wcp-color-surface);
+  padding: 0.55rem 0.9rem;
+  border-radius: 0 var(--wcp-radius-sm) var(--wcp-radius-sm) 0;
+  margin: 0.6rem 0 0;
+}
+
+/* ── WCP compliance badge strip ────────────────────────────────────────────── */
+.wcp-panel-badge {
+  flex-shrink: 0;
+  padding: 0.3rem 0.75rem;
+  border-top: 1px solid var(--wcp-color-border);
+  background: var(--wcp-color-surface);
+  display: flex; justify-content: flex-end; align-items: center;
+}
+
+/* ── Theme collection bar (Step 11) ────────────────────────────────────────── */
+.wcp-collection-bar {
+  padding: 0.55rem var(--wcp-space-5);
+  border-bottom: 1px solid var(--wcp-color-border);
+  flex-shrink: 0;
+}
+#wcp-collection-select {
+  width: 100%;
+  background: var(--wcp-color-surface);
+  border: 1px solid var(--wcp-color-border);
+  border-radius: var(--wcp-radius-sm);
+  color: var(--wcp-color-text);
+  font-size: var(--wcp-font-size-sm);
+  padding: 5px 8px;
+  cursor: pointer;
+  outline: none;
+}
+.wcp-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem var(--wcp-space-5) 0.35rem;
+  font-size: var(--wcp-font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--wcp-color-text-muted);
+  border-bottom: 1px solid var(--wcp-color-border);
+}
+.wcp-col-delete-btn {
+  font-size: var(--wcp-font-size-xs);
+  padding: 2px 8px;
+  background: none;
+  border: 1px solid var(--wcp-color-border);
+  border-radius: var(--wcp-radius-sm);
+  color: var(--wcp-color-text-muted);
+  cursor: pointer;
+  transition: all var(--wcp-duration-fast);
+}
+.wcp-col-delete-btn:hover {
+  border-color: var(--wcp-color-danger);
+  color: var(--wcp-color-danger);
+}
+.wcp-theme-loading {
+  padding: 1.2rem var(--wcp-space-5);
+  color: var(--wcp-color-text-muted);
+  font-size: var(--wcp-font-size-sm);
+  text-align: center;
+}

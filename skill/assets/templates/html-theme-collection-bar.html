@@ -1,0 +1,23 @@
+<!--
+  WCP THEME COLLECTION BAR — dropdown selector for theme collections
+
+  Place at the top of the Theme pane (#wcp-pane-theme), as the first child
+  before the theme list div (#wcp-theme-list).
+
+  The dropdown calls wcpSwitchCollection(colId) on change.
+  Options are rebuilt by renderDropdown() in js-theme-modal-controller.js —
+  the static "My Themes" option is always first; seasonal and user-imported
+  collections are added dynamically.
+
+  CSS: .wcp-collection-bar and #wcp-collection-select in css-theme-modal-panel.css
+  JS:  js-theme-modal-controller.js (renderDropdown, wcpSwitchCollection)
+
+  If your site does not use seasonal .wcpt collections, the dropdown still
+  renders correctly — it will only show "My Themes" (and any user-imported
+  multi-theme .wcpt files, which become their own entries).
+-->
+<div class="wcp-collection-bar">
+  <select id="wcp-collection-select" onchange="wcpSwitchCollection(this.value)">
+    <option value="my-themes">My Themes</option>
+  </select>
+</div>

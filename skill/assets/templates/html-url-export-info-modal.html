@@ -1,0 +1,50 @@
+<!--
+  WCP URL EXPORT INFO MODAL — plain-English explanation for non-technical users
+
+  Place immediately after the main WCP .wcpt info modal (html-wcpt-info-modal.html),
+  before </body>.
+
+  JS: the modal controller must expose:
+    wcpOpenUrlExportInfo()       — called by the ⓘ button in html-theme-url-export.html
+    wcpCloseUrlExportInfo(back)  — close only (back=false) or close + reopen Settings (back=true)
+
+  Wire in js-theme-modal-controller.js:
+    var urlExportInfoBackdrop = document.getElementById('wcp-url-export-info-backdrop');
+    window.wcpOpenUrlExportInfo = function () { backdrop.classList.remove('open'); urlExportInfoBackdrop.classList.add('open'); };
+    window.wcpCloseUrlExportInfo = function (backToSettings) { urlExportInfoBackdrop.classList.remove('open'); if (backToSettings) { switchTab('theme'); backdrop.classList.add('open'); } };
+    urlExportInfoBackdrop.addEventListener('click', function (e) { if (e.target === urlExportInfoBackdrop) wcpCloseUrlExportInfo(); });
+
+  Add to the Escape key handler:
+    else if (urlExportInfoBackdrop.classList.contains('open')) wcpCloseUrlExportInfo();
+-->
+<div class="wcp-theme-backdrop" id="wcp-url-export-info-backdrop">
+  <div class="wcp-theme-panel" style="max-width:480px;">
+    <div class="wcp-theme-panel-header">
+      <h3>Sharing a Theme via Web Address</h3>
+      <button class="wcp-theme-close" onclick="wcpCloseUrlExportInfo()" aria-label="Close">&times;</button>
+    </div>
+    <div class="wcp-theme-list" style="padding:1rem 1.25rem;gap:0;flex:none;overflow-y:auto;max-height:62vh;">
+      <h4 style="font-family:inherit;font-size:var(--wcp-font-size-xl);font-weight:var(--wcp-font-weight-semibold);color:var(--wcp-color-text);margin:0 0 0.55rem;">What does this do?</h4>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:1.2rem;">Every theme you apply has a name and a set of colour and style choices. This feature lets you copy a special web address that carries your exact theme inside it. When someone else opens that link, the page automatically shows in your theme &mdash; without them having to find and apply it themselves.</p>
+
+      <h4 style="font-family:inherit;font-size:var(--wcp-font-size-xl);font-weight:var(--wcp-font-weight-semibold);color:var(--wcp-color-text);margin:0 0 0.55rem;">Which version do I use?</h4>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text-muted);line-height:1.65;margin:0 0 0.3rem;"><strong style="color:var(--wcp-color-text);">Start of address (?&thinsp;&hellip;)</strong></p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.9rem;">Use this when you are sharing a plain web address, for example <code style="font-size:0.78rem;">https://hyperpolyglot.io</code>. The theme information is added right after the page address, starting with a <code style="font-size:0.78rem;">?</code>.</p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text-muted);line-height:1.65;margin:0 0 0.3rem;"><strong style="color:var(--wcp-color-text);">Add to existing address (&amp;&thinsp;&hellip;)</strong></p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:1.2rem;">Use this when the address you are sharing already has a <code style="font-size:0.78rem;">?</code> somewhere in it. The theme information is added after whatever is already there, using an <code style="font-size:0.78rem;">&amp;</code> to separate it. If you are not sure, look at the address in your browser &mdash; if you see a <code style="font-size:0.78rem;">?</code> after the page name, use this version.</p>
+
+      <h4 style="font-family:inherit;font-size:var(--wcp-font-size-xl);font-weight:var(--wcp-font-weight-semibold);color:var(--wcp-color-text);margin:0 0 0.55rem;">Will it work on any website?</h4>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.5rem;">No &mdash; only on websites that display the <strong>WCP Compliant</strong> badge. The badge means the website understands this kind of theme address and knows what to do with it. You will usually find the badge in the page footer.</p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text-muted);line-height:1.65;margin-bottom:0.3rem;">On other websites the link will still open the page normally &mdash; it just will not change the colours.</p>
+    </div>
+    <div class="wcp-theme-panel-footer" style="justify-content:space-between;">
+      <button class="wcp-theme-btn wcp-theme-btn-primary" onclick="wcpCloseUrlExportInfo(true)">&#8592; Back to Settings</button>
+      <button class="wcp-theme-btn wcp-theme-btn-secondary" onclick="wcpCloseUrlExportInfo()">Close</button>
+    </div>
+    <div class="wcp-panel-badge">
+      <a href="https://widgetcontextprotocol.com" target="_blank" rel="noopener" title="WCP Theme Compliant" style="text-decoration:none;display:flex;align-items:center;">
+        <img src="https://dev.widgetcontextprotocol.com/images/wcp-compliant-badge.svg" alt="WCP Compliant" height="16">
+      </a>
+    </div>
+  </div>
+</div>

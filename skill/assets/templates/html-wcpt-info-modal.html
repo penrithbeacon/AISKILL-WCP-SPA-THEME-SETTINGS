@@ -1,0 +1,134 @@
+<!--
+  WCP .wcpt INFO MODAL — secondary panel explaining theme portability
+
+  Place in <body> alongside html-settings-modal.html (after it is fine).
+  Opened by clicking the (i) button in the Import wizard and in the WCP pane.
+  On close, returns to the tab it was opened from.
+
+  CSS: css-theme-modal-panel.css (shares .wcp-theme-backdrop / .wcp-theme-panel)
+  JS:  js-theme-modal-controller.js (wcpOpenInfoModal / wcpCloseInfoModal)
+
+  No customisation needed — this content is generic WCP documentation.
+-->
+
+<!-- ── WCP .wcpt Info Modal ────────────────────────────────────────── -->
+<div class="wcp-theme-backdrop" id="wcp-info-backdrop">
+  <div class="wcp-theme-panel" style="max-width:500px;">
+    <div class="wcp-theme-panel-header">
+      <h3>About WCP Theme Portability</h3>
+      <button class="wcp-theme-close" onclick="wcpCloseInfoModal()" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="wcp-theme-list"
+         style="padding:1rem 1.25rem;gap:0;flex:none;overflow-y:auto;max-height:62vh;">
+
+      <h4 style="font-family:inherit;font-size:var(--wcp-font-size-3xl);font-weight:var(--wcp-font-weight-bold);
+                 line-height:var(--wcp-line-height-tight);color:var(--wcp-color-text);margin:0 0 0.9rem;">
+        About .wcpt Theme Files
+      </h4>
+
+      <h4 style="font-family:inherit;font-size:var(--wcp-font-size-xl);font-weight:var(--wcp-font-weight-semibold);
+                 color:var(--wcp-color-text);margin:0 0 0.55rem;">
+        WCP Portability Specification
+      </h4>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.8rem;">
+        WCPP defines how WCP-based dashboard setups are bundled, transported, and reconstructed on a different machine.
+        Where WCP handles runtime communication between widget and host, WCPP handles the packaging and distribution
+        of those widget setups.
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.8rem;">
+        Importing a <code style="font-size:0.78rem;">.wcpt</code> file imports a theme using the
+        <code style="font-size:0.78rem;">.wcpt</code> theme portability format defined in that specification.
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text-muted);line-height:1.65;margin-bottom:1.4rem;">
+        Full specification:
+        <a href="https://wcpp.widgetcontextprotocol.com" target="_blank" rel="noopener"
+           style="color:var(--wcp-color-primary);">wcpp.widgetcontextprotocol.com</a>
+      </p>
+
+      <h4 style="font-family:inherit;font-size:var(--wcp-font-size-xl);font-weight:var(--wcp-font-weight-semibold);
+                 color:var(--wcp-color-text);margin:0 0 0.55rem;">
+        How to Create Your Own Custom Theme
+      </h4>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.8rem;">
+        The WCP Widget Theme Studio is a Docker container providing a full theme gallery and custom theme editor for
+        WCP-compliant dashboards. It ships with 15 built-in themes and allows unlimited custom themes &mdash;
+        all exportable as <code style="font-size:0.78rem;">.wcpt</code> files ready to import here, or shareable via URL.
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.35rem;">
+        <strong>Prerequisite:</strong> Docker Desktop must be installed before running the Studio.
+        It is free for personal and small-team use:
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text-muted);line-height:1.65;
+                word-break:break-all;margin-bottom:0.8rem;">
+        <a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener"
+           style="color:var(--wcp-color-primary);">www.docker.com/products/docker-desktop</a>
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.35rem;">
+        The Studio is available free of charge on Docker Hub:
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text-muted);line-height:1.65;
+                word-break:break-all;margin-bottom:0.8rem;">
+        <a href="https://hub.docker.com/r/penrithbeacon/wcp-widget-theme-studio" target="_blank" rel="noopener"
+           style="color:var(--wcp-color-primary);">hub.docker.com/r/penrithbeacon/wcp-widget-theme-studio</a>
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.35rem;">
+        <strong>Quick Start:</strong> With Docker Desktop running, open a terminal and paste:
+      </p>
+      <div style="position:relative;background:var(--wcp-color-surface);border:1px solid var(--wcp-color-border);
+                  border-radius:var(--wcp-radius-md);margin:0 0 0.7rem;">
+        <button id="wcp-copy-cmd-btn" onclick="wcpCopyCmd()" title="Copy to clipboard"
+                style="position:absolute;top:6px;right:6px;background:var(--wcp-color-surface-raised);
+                       border:1px solid var(--wcp-color-border);color:var(--wcp-color-text-muted);
+                       cursor:pointer;border-radius:var(--wcp-radius-sm);padding:4px 6px;
+                       line-height:0;display:flex;align-items:center;justify-content:center;">
+          <!-- Clipboard icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+        </button>
+        <div style="font-family:var(--wcp-font-mono);font-size:0.68rem;line-height:1.75;
+                    padding:10px 36px 10px 12px;overflow-x:auto;white-space:pre;color:var(--wcp-color-text);">docker run -d \<br>  --name wcp-widget-theme-studio \<br>  -p 3740:3740 \<br>  -v theme_data:/app/data \<br>  -v theme_published:/app/published \<br>  -e CONTAINER_NAME=wcp-widget-theme-studio \<br>  --restart unless-stopped \<br>  docker.io/penrithbeacon/wcp-widget-theme-studio:latest</div>
+      </div>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.5rem;">
+        Once running, open <code style="font-size:0.78rem;">http://localhost:3740</code> in your browser.
+      </p>
+
+      <h4 style="font-family:inherit;font-size:var(--wcp-font-size-3xl);font-weight:var(--wcp-font-weight-bold);
+                 line-height:var(--wcp-line-height-tight);color:var(--wcp-color-text);margin:0 0 0.9rem;">
+        Applying a Theme via URL
+      </h4>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.8rem;">
+        The WCP Widget Theme Studio offers a second way to share a custom theme &mdash; one that requires no file
+        download or manual import on the recipient&rsquo;s part. Once a theme has been designed in the Studio,
+        it can be exported directly as a URL parameter that carries the full theme inline.
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin-bottom:0.8rem;">
+        Where the destination page has no existing query parameters, the Studio generates a complete query string
+        beginning with <code style="font-size:0.78rem;">?</code> that encodes the entire theme. Appending this to any
+        WCP-aware URL causes the theme to be imported and applied automatically the moment the page loads.
+      </p>
+      <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text-muted);line-height:1.65;margin-bottom:0;">
+        Where the destination page already carries URL parameters, the Studio instead provides a single parameter
+        ready to append with <code style="font-size:0.78rem;">&amp;</code>, so the theme travels alongside existing
+        query data without conflict.
+      </p>
+    </div>
+
+    <div class="wcp-theme-panel-footer" style="justify-content:flex-end;">
+      <button class="wcp-theme-btn wcp-theme-btn-secondary" onclick="wcpCloseInfoModal()">Close</button>
+    </div>
+
+    <!-- WCP compliance badge — mandatory -->
+    <div class="wcp-panel-badge">
+      <a href="https://widgetcontextprotocol.com" target="_blank" rel="noopener"
+         title="WCP Theme Compliant" style="text-decoration:none;display:flex;align-items:center;">
+        <img src="https://dev.widgetcontextprotocol.com/images/wcp-compliant-badge.svg"
+             alt="WCP Compliant" height="16">
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,140 @@
+<!--
+  WCP SETTINGS MODAL — full panel HTML
+
+  Place anywhere in <body>, typically just before the closing </body> tag.
+
+  Three tabs:
+    • Theme  — radio list of built-in and imported themes + .wcpt file import wizard
+    • About  — SPA description (customise wcp-about-section content for your project)
+    • WCP    — WCP ecosystem overview with links (generic; no customisation needed)
+
+  CSS: css-theme-modal-panel.css
+  JS:  js-theme-modal-controller.js
+
+  CUSTOMISE:
+    1. "About" pane — replace the two wcp-about-section blocks with your own content
+    2. Built-in themes — see WCP_BUILTIN_THEMES in js-theme-modal-controller.js
+    3. WCP badge href/src — already points at widgetcontextprotocol.com; leave as-is
+-->
+
+<!-- ── WCP Settings Modal ─────────────────────────────────────────────── -->
+<div class="wcp-theme-backdrop" id="wcp-theme-backdrop">
+  <div class="wcp-theme-panel">
+    <div class="wcp-theme-panel-header">
+      <h3>Settings</h3>
+      <button class="wcp-theme-close" onclick="wcpCloseThemeModal()" aria-label="Close">&times;</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="wcp-settings-tabs">
+      <button class="wcp-settings-tab active" id="wcp-tab-theme"  onclick="wcpSwitchTab('theme')">Theme</button>
+      <button class="wcp-settings-tab"        id="wcp-tab-about"  onclick="wcpSwitchTab('about')">About</button>
+      <button class="wcp-settings-tab"        id="wcp-tab-wcp"    onclick="wcpSwitchTab('wcp')">WCP</button>
+    </div>
+
+    <!-- Theme pane -->
+    <div class="wcp-settings-pane" id="wcp-pane-theme">
+      <div class="wcp-theme-list" id="wcp-theme-list"></div>
+      <div class="wcp-theme-error" id="wcp-theme-error"></div>
+      <div class="wcp-theme-wizard" id="wcp-theme-wizard">
+        <div class="wcp-wizard-label-row">
+          <label>Import a <code>.wcpt</code> theme file</label>
+          <button class="wcp-info-btn" onclick="wcpOpenInfoModal()" aria-label="About .wcpt format" title="About .wcpt format">
+            <!-- Info (i) icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15"
+                 fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+          </button>
+        </div>
+        <input type="file" id="wcp-theme-file" accept=".wcpt,.json">
+        <div class="wcp-theme-wizard-actions">
+          <button class="wcp-theme-btn wcp-theme-btn-secondary" id="wcp-wizard-cancel">Cancel</button>
+          <button class="wcp-theme-btn wcp-theme-btn-primary"   onclick="wcpImportFile()">Import</button>
+        </div>
+      </div>
+      <div class="wcp-theme-panel-footer">
+        <button class="wcp-theme-btn wcp-theme-btn-secondary" onclick="wcpCloseThemeModal()">Close</button>
+        <button class="wcp-theme-btn wcp-theme-btn-primary"   id="wcp-import-btn">Import Theme</button>
+      </div>
+    </div>
+
+    <!-- About pane — CUSTOMISE THIS SECTION for your project -->
+    <div class="wcp-settings-pane hidden" id="wcp-pane-about">
+      <div class="wcp-about-body">
+        <div class="wcp-about-section">
+          <h4>Your Application Name</h4>
+          <p>Replace this paragraph with a description of your SPA.</p>
+        </div>
+        <div class="wcp-about-section">
+          <h4>Design &amp; Production</h4>
+          <p>Designed and produced by <a href="https://penrithbeacon.com" target="_blank" rel="noopener">Penrith Beacon Communications (PBC)</a>.</p>
+          <p class="wcp-about-meta">This Settings modal is a standard WCP settings screen, part of the Widget Context Protocol (WCP) theme and settings system.</p>
+          <p class="wcp-about-meta">More about the Widget Context Protocol can be found at <a href="https://widgetcontextprotocol.com" target="_blank" rel="noopener">widgetcontextprotocol.com</a>.</p>
+        </div>
+      </div>
+      <div class="wcp-theme-panel-footer" style="justify-content:flex-end;">
+        <button class="wcp-theme-btn wcp-theme-btn-secondary" onclick="wcpCloseThemeModal()">Close</button>
+      </div>
+    </div>
+
+    <!-- WCP pane — generic; no customisation needed -->
+    <div class="wcp-settings-pane hidden" id="wcp-pane-wcp">
+      <div class="wcp-about-body">
+        <div class="wcp-about-section">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin:0 0 0.5rem;">
+            <h4 style="margin:0;">Introduction to WCP</h4>
+            <button class="wcp-info-btn" onclick="wcpOpenInfoModal('wcp')" aria-label="About WCP theme portability" title="About WCP theme portability">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15"
+                   fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+            </button>
+          </div>
+          <p>The Widget Context Protocol is an open protocol for embedding containerised widgets into any host application &mdash; free to implement. It defines a lightweight runtime communication layer between widget and host, covering theming, data exchange, and widget lifecycle management. The four pillars of the WCP ecosystem are outlined below.</p>
+          <p class="wcp-callout">While WCP is designed with containerised widgets at its core, many of its design patterns &mdash; CSS token systems, portable theme formats, and interface constructions &mdash; translate naturally to any web-delivered environment. These conventions apply equally within a containerised widget and across conventional websites and intranets, requiring no containerisation to deliver their value.</p>
+          <p style="font-size:var(--wcp-font-size-sm);color:var(--wcp-color-text);line-height:1.65;margin:0.9rem 0 0;">The umbrella site for the entire WCP ecosystem:</p>
+          <a class="wcp-subsection-link" href="https://widgetcontextprotocol.com" target="_blank" rel="noopener">widgetcontextprotocol.com</a>
+        </div>
+        <div class="wcp-about-section">
+          <p class="wcp-subsection-h">WCP</p>
+          <p>The canonical specification. Covers all mandatory endpoints, the <code style="font-size:0.78rem;">postMessage</code> theme API, the widget manifest format, WCP versions, and the full CSS custom-property token set that drives WCP-compliant theming.</p>
+          <a class="wcp-subsection-link" href="https://wcp.widgetcontextprotocol.com" target="_blank" rel="noopener">wcp.widgetcontextprotocol.com</a>
+        </div>
+        <div class="wcp-about-section">
+          <p class="wcp-subsection-h">WCPP</p>
+          <p>The WCP Portability Protocol. Defines how WCP artefacts &mdash; themes and application distributables &mdash; are packaged, transported, and reconstructed on a different machine. The <code style="font-size:0.78rem;">.wcpt</code> theme file format used by this application is defined here.</p>
+          <a class="wcp-subsection-link" href="https://wcpp.widgetcontextprotocol.com" target="_blank" rel="noopener">wcpp.widgetcontextprotocol.com</a>
+        </div>
+        <div class="wcp-about-section">
+          <p class="wcp-subsection-h">Dev</p>
+          <p>Practical implementation reference for widget authors. Endpoint scaffolding, theme adoption patterns, the user theme management panel, worked examples, and compliance checklists for building WCP-compliant widgets.</p>
+          <a class="wcp-subsection-link" href="https://dev.widgetcontextprotocol.com" target="_blank" rel="noopener">dev.widgetcontextprotocol.com</a>
+        </div>
+        <div class="wcp-about-section">
+          <p class="wcp-subsection-h">AI</p>
+          <p>An AI-assisted build chain guiding developers through design, Docker publication, and GitHub release workflows for WCP-compliant widgets &mdash; from concept to distributable in a single pipeline.</p>
+          <a class="wcp-subsection-link" href="https://ai.widgetcontextprotocol.com" target="_blank" rel="noopener">ai.widgetcontextprotocol.com</a>
+        </div>
+      </div>
+      <div class="wcp-theme-panel-footer" style="justify-content:flex-end;">
+        <button class="wcp-theme-btn wcp-theme-btn-secondary" onclick="wcpCloseThemeModal()">Close</button>
+      </div>
+    </div>
+
+    <!-- WCP compliance badge — mandatory for WCP-compliant SPAs -->
+    <div class="wcp-panel-badge">
+      <a href="https://widgetcontextprotocol.com" target="_blank" rel="noopener"
+         title="WCP Theme Compliant" style="text-decoration:none;display:flex;align-items:center;">
+        <img src="https://dev.widgetcontextprotocol.com/images/wcp-compliant-badge.svg"
+             alt="WCP Compliant" height="16">
+      </a>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Version | `1.0.0` |
+| Version | `1.3.2` |
 | License | `MIT` |
 | Author | Anthony Harrison |
 | Homepage | https://openaiskillpackage.com/ |
@@ -14,9 +14,17 @@
 
 ## What This Skill Does
 
-[Replace this section with a detailed description of what the skill does, when to use it,
-and what problem it solves. Be specific — someone reading this README should understand
-whether this skill is what they need without having to open the .aiskill file.]
+Adds a complete, ready-to-use theme settings system to an existing single-page application
+that already uses the WCP (Widget Context Protocol) `--wcp-*` CSS custom property token
+layer. Rather than building a settings UI from scratch, the agent copies a set of proven
+CSS/HTML/JS fragments into the target site in a defined order: a gear-icon settings button,
+a tabbed modal (Theme / About / WCP), a theme engine that reads and applies `--wcp-*`
+variables, `.wcpt` file import via JSZip, shareable theme URLs, and an optional seasonal
+collections dropdown with four bundled collections (Spring, Summer, Autumn, Winter).
+
+Use this when you have a WCP-compliant SPA and want its users to be able to switch themes,
+share a themed URL with someone else, or import a custom `.wcpt` theme file — without
+writing that system yourself.
 
 ---
 
@@ -24,19 +32,20 @@ whether this skill is what they need without having to open the .aiskill file.]
 
 Before using this skill, ensure the following are available in the AI agent's environment:
 
-- Python 3.8 or later
-- [Add any pip packages, e.g. `pip install pyyaml weasyprint`]
-- [Add any system tools, e.g. `git`, `gh` CLI]
+- The target SPA must already use WCP `--wcp-*` CSS custom properties as its design token layer
+- A browser context (not `file://`) — the theme engine needs `localStorage`/`sessionStorage`
+- [JSZip](https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js) loaded via CDN (for `.wcpt` import), unless already bundled
+- Python 3.8+ is only needed for this repo's own test suite, not for using the skill itself
 
 ---
 
 ## Quick Start
 
-1. Download `WCP-SPA-THEME-SETTINGS-1.0.0.aiskill` from the [Releases](https://github.com/PenrithBeacon/AISKILL-WCP-SPA-THEME-SETTINGS/releases) page
+1. Download `WCP-SPA-THEME-SETTINGS-1.3.2.aiskill` from the [Releases](https://github.com/PenrithBeacon/AISKILL-WCP-SPA-THEME-SETTINGS/releases) page
 2. Give your AI agent the following prompt:
 
 ```
-Using the Skill Package at /path/to/WCP-SPA-THEME-SETTINGS-1.0.0.aiskill,
+Using the Skill Package at /path/to/WCP-SPA-THEME-SETTINGS-1.3.2.aiskill,
 [describe what you want the skill to do, e.g. 'audit the contrast of /path/to/saved-page.html']
 ```
 
@@ -45,20 +54,22 @@ Using the Skill Package at /path/to/WCP-SPA-THEME-SETTINGS-1.0.0.aiskill,
 ## Skill Archive Contents
 
 ```
-WCP-SPA-THEME-SETTINGS-1.0.0.aiskill  (ZIP archive)
+WCP-SPA-THEME-SETTINGS-1.3.2.aiskill  (ZIP archive)
 ├── manifest.yaml          # identity & metadata
 ├── SKILL.md               # AI entry point — execution instructions
 ├── README.md              # this file (skill-level)
 ├── CHANGELOG.md           # version history
 ├── checksums.yaml         # SHA-256 integrity hashes
 ├── assets/
-│   ├── scripts/           # execution scripts
-│   │   └── [script].py
-│   ├── templates/         # content templates (if any)
-│   └── tests/             # unit tests
-│       └── test_[script].py
+│   ├── scripts/
+│   │   ├── js-wcp-theme-engine.js        # core theme state machine
+│   │   ├── js-theme-modal-controller.js  # modal UI logic
+│   │   └── js-theme-url-export.js        # optional URL export IIFE
+│   ├── templates/          # CSS + HTML fragments copied into the target SPA
+│   ├── themes/             # 4 bundled seasonal .wcpt collections
+│   └── tests/              # Python contract tests (token/id cross-reference checks)
 └── inputs/
-    └── schema.json        # input schema
+    └── schema.json         # intentionally empty -- no structured inputs
 ```
 
 ---

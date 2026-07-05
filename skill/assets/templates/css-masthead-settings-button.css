@@ -1,0 +1,27 @@
+/*
+ * WCP MASTHEAD SETTINGS BUTTON — CSS for the gear icon in the site header
+ *
+ * Place adjacent to your existing masthead/header styles.
+ * The gear SVG icon is inlined in html-masthead-settings-button.html.
+ *
+ * Depends on: css-wcp-token-defaults.css
+ */
+
+.masthead-settings {
+  margin-left: 0.6rem;
+  background: none;
+  border: 1px solid var(--wcp-color-border);
+  color: var(--wcp-color-text-muted);
+  padding: 4px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.12s, border-color 0.12s;
+  line-height: 0;
+}
+.masthead-settings:hover {
+  background: var(--wcp-color-primary-dim);
+  border-color: var(--wcp-color-primary);
+  color: var(--wcp-color-text);
+}

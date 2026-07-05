@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WCP SPA Theme Settings Inputs",
+  "description": "Embed WCP theme switching (Settings modal, .wcpt import, URL sharing, seasonal collections) into any WCP-compliant SPA",
+  "type": "object",
+  "required": [],
+  "properties": {
+  }
+}

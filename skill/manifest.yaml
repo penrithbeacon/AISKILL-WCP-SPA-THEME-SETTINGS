@@ -1,0 +1,21 @@
+name: WCP SPA Theme Settings
+id: com.penrithbeacon.wcp-spa-theme-settings
+uuid: 515af161-bbcc-4170-a376-7b8f74480849
+version: 1.0.0
+description: Embed WCP theme switching (Settings modal, .wcpt import, URL sharing, seasonal collections) into any WCP-compliant SPA
+author: Anthony Harrison
+authorEmail: anthony@harrisonofthenorth.com
+entry: SKILL.md
+license: MIT
+minimum_runtime: "1.0.0"
+capabilities:
+  - filesystem.read
+  - filesystem.write
+homepage: https://openaiskillpackage.com/
+repository: https://github.com/PenrithBeacon/AISKILL-WCP-SPA-THEME-SETTINGS
+tags: [wcp, spa, theme, settings]
+type: procedural
+changelog:
+  - version: 1.0.0
+    changes:
+      - Initial release

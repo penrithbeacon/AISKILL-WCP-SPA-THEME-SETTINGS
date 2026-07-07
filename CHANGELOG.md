@@ -11,6 +11,12 @@ which itself was one version stale (headed "v1.3.1" while `manifest.yaml` alread
 
 ---
 
+## [2.0.0]
+
+### Changed
+- **BREAKING:** `CARD.md` is now a third REQUIRED package file, alongside `manifest.yaml` and
+  `SKILL.md` — generated deterministically by `build_card.py` from `manifest.yaml`
+
 ## [1.3.2]
 
 Current shipped state as recovered from the `.aiskill` archive. The specific changes made

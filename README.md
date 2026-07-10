@@ -2,9 +2,15 @@
 
 **WCP SPA Theme Settings** — Embed WCP theme switching (Settings modal, .wcpt import, URL sharing, seasonal collections) into any WCP-compliant SPA
 
+Adds a complete, ready-to-use theme settings system to an existing single-page application that already uses the WCP (Widget Context Protocol) `--wcp-*` CSS custom property token layer — a gear-icon settings button, a tabbed modal (Theme / About / WCP), a theme engine that reads and applies `--wcp-*` variables, `.wcpt` file import via JSZip, shareable theme URLs, and an optional seasonal collections dropdown with four bundled collections (Spring, Summer, Autumn, Winter). Rather than building a settings UI from scratch, the agent copies a set of proven CSS/HTML/JS fragments into the target site in a defined order.
+
+Reach for this whenever a WCP-compliant SPA needs its users to be able to switch themes, share a themed URL with someone else, or import a custom `.wcpt` theme file, without writing that system by hand. The target SPA must already use `--wcp-*` CSS custom properties as its design token layer — see WCP SPA WCP Compliance for that prerequisite step if it doesn't yet.
+
+Ships with Python contract tests verifying the token and id cross-references between the copied fragments stay consistent, and carries the same SYSTEM.md external-registry verification as every other package in this ecosystem.
+
 | | |
 |---|---|
-| Version | `1.3.2` |
+| Version | `2.0.3` |
 | License | `MIT` |
 | Author | Anthony Harrison |
 | Homepage | https://openaiskillpackage.com/ |
@@ -41,11 +47,11 @@ Before using this skill, ensure the following are available in the AI agent's en
 
 ## Quick Start
 
-1. Download `WCP-SPA-THEME-SETTINGS-1.3.2.aiskill` from the [Releases](https://github.com/PenrithBeacon/AISKILL-WCP-SPA-THEME-SETTINGS/releases) page
+1. Download `WCP-SPA-THEME-SETTINGS-2.0.3.aiskill` from the [Releases](https://github.com/PenrithBeacon/AISKILL-WCP-SPA-THEME-SETTINGS/releases) page
 2. Give your AI agent the following prompt:
 
 ```
-Using the Skill Package at /path/to/WCP-SPA-THEME-SETTINGS-1.3.2.aiskill,
+Using the Skill Package at /path/to/WCP-SPA-THEME-SETTINGS-2.0.3.aiskill,
 [describe what you want the skill to do, e.g. 'audit the contrast of /path/to/saved-page.html']
 ```
 
@@ -54,10 +60,10 @@ Using the Skill Package at /path/to/WCP-SPA-THEME-SETTINGS-1.3.2.aiskill,
 ## Skill Archive Contents
 
 ```
-WCP-SPA-THEME-SETTINGS-1.3.2.aiskill  (ZIP archive)
+WCP-SPA-THEME-SETTINGS-2.0.3.aiskill  (ZIP archive)
 ├── manifest.yaml          # identity & metadata
 ├── SKILL.md               # AI entry point — execution instructions
-├── README.md              # this file (skill-level)
+├── README.md              # this file — byte-identical to the repo-root copy
 ├── CHANGELOG.md           # version history
 ├── checksums.yaml         # SHA-256 integrity hashes
 ├── assets/

@@ -1,8 +1,30 @@
 name: WCP SPA Theme Settings
 id: com.penrithbeacon.wcp-spa-theme-settings
 uuid: 515af161-bbcc-4170-a376-7b8f74480849
-version: 2.0.2
+version: 2.0.3
 description: Embed WCP theme switching (Settings modal, .wcpt import, URL sharing, seasonal collections) into any WCP-compliant SPA
+synopsis: |
+  Adds a complete, ready-to-use theme settings system to an existing
+  single-page application that already uses the WCP (Widget Context
+  Protocol) `--wcp-*` CSS custom property token layer -- a gear-icon
+  settings button, a tabbed modal (Theme / About / WCP), a theme engine
+  that reads and applies `--wcp-*` variables, `.wcpt` file import via
+  JSZip, shareable theme URLs, and an optional seasonal collections
+  dropdown with four bundled collections (Spring, Summer, Autumn, Winter).
+  Rather than building a settings UI from scratch, the agent copies a set
+  of proven CSS/HTML/JS fragments into the target site in a defined order.
+
+  Reach for this whenever a WCP-compliant SPA needs its users to be able
+  to switch themes, share a themed URL with someone else, or import a
+  custom `.wcpt` theme file, without writing that system by hand. The
+  target SPA must already use `--wcp-*` CSS custom properties as its
+  design token layer -- see WCP SPA WCP Compliance for that prerequisite
+  step if it doesn't yet.
+
+  Ships with Python contract tests verifying the token and id
+  cross-references between the copied fragments stay consistent, and
+  carries the same SYSTEM.md external-registry verification as every
+  other package in this ecosystem.
 author: Anthony Harrison
 authorEmail: anthony@harrisonofthenorth.com
 entry: SKILL.md
@@ -23,6 +45,10 @@ tags:
   - collections
 type: procedural
 changelog:
+  - version: 2.0.3
+    changes:
+      - "BREAKING (.aiskill spec v2.3.0): new required manifest field synopsis — a multi-paragraph, hand-authored expansion of description, feeding both README.md's opening and CARD.md's rendering"
+      - "Unified README.md: repo-root and skill/README.md are now byte-identical (previously diverged), and both fixed a stale v1.3.2 version reference left over since the 2.0.x version bumps"
   - version: 2.0.2
     changes:
       - "BREAKING: SYSTEM.md is now a fourth REQUIRED package file (.aiskill spec v2.2.0) — an invariant, versioned verification protocol every AI agent must follow before executing SKILL.md — packages built before this version lack it and no longer conform"

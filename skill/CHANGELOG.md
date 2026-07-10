@@ -11,6 +11,18 @@ which itself was one version stale (headed "v1.3.1" while `manifest.yaml` alread
 
 ---
 
+## [2.0.3] — 2026-07-10
+
+### Added
+- **BREAKING** (`.aiskill` spec v2.3.0): new required manifest field
+  `synopsis` — a multi-paragraph, hand-authored expansion of `description`,
+  feeding both `README.md`'s opening and `CARD.md`'s rendering
+
+### Fixed
+- Repo-root `README.md` and `skill/README.md` had diverged and both still
+  referenced a stale `v1.3.2` — unified into one byte-identical README,
+  version references corrected
+
 ## [2.0.2] — 2026-07-10
 
 ### Added

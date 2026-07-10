@@ -1,7 +1,7 @@
 name: WCP SPA Theme Settings
 id: com.penrithbeacon.wcp-spa-theme-settings
 uuid: 515af161-bbcc-4170-a376-7b8f74480849
-version: 2.0.0
+version: 2.0.1
 description: Embed WCP theme switching (Settings modal, .wcpt import, URL sharing, seasonal collections) into any WCP-compliant SPA
 author: Anthony Harrison
 authorEmail: anthony@harrisonofthenorth.com
@@ -22,6 +22,9 @@ tags:
   - collections
 type: procedural
 changelog:
+  - version: 2.0.1
+    changes:
+      - Bundled skill/LICENSE.txt (MIT) — conforms to the v2.1.0 .aiskill spec's optional bundled license file
   - version: 2.0.0
     changes:
       - "BREAKING: CARD.md is now a third REQUIRED package file, generated deterministically by build_card.py from manifest.yaml — packages built before this version no longer conform"

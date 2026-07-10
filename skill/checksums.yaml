@@ -1,7 +1,8 @@
 algorithm: sha256
 files:
-  CARD.md: bff8c2c318e01c2c691ca35b764fbab934bf018e311e6b84c96e33b2b1816a12
-  CHANGELOG.md: e6227cd41c283f0ec651a32563f945ab03bdac5da6ad334c930370df068f0e7c
+  CARD.md: c6af324c3bb1700d4cb3704a2c863fed1947a00aada15ad13180373e39d339a6
+  CHANGELOG.md: 922cc188c1be77ce53666c38017b48a336864d4dc0eb2b7167792b4c30fe13dd
+  LICENSE.txt: f09f8eeb593e567b28ec7f0c23079fda2f627f14d05a3651f531a64c006d7086
   README.md: 61a4e5189f8cc2e663ce1271ddbbabdd5392bb6ae71e66bb0836875ecdecbd65
   SKILL.md: e49cde4461b8db117091447463272ebe0fd46a562a7a186265f4db83a0c9945e
   assets/scripts/js-theme-modal-controller.js: 01ceb564edec0f5e625ab0eb35f8ce3e2a332eb137107d200405f13a6bbcd427
@@ -22,4 +23,4 @@ files:
   assets/themes/wcp-theme-collection-seasons-summer-4e27a6db-1044-4eca-aa83-13166ef8f54e.wcpt: 9755529cc0ba6814506a275debd8b743e264c6afdb783e470f326411e47a44ee
   assets/themes/wcp-theme-collection-seasons-winter-4101d760-bcb8-4d1b-8a80-38ba6a1b736a.wcpt: 1eeb19c66d791f0cf122fe42e980bd795ebd0ae9605b642073d3f2508d161689
   inputs/schema.json: 87ea5c12349444360d9cfd1d2b0353cd75469ed93b7730c24c369c28f568b8db
-  manifest.yaml: 6b780cfa9d87f217a4f01b1dd8525843d8a5651091470d4c2e374fe1820cb71c
+  manifest.yaml: fa3029b8fc127a8c5d170629ffab98d8023472aaaa5e8032adf12368e14ad13b

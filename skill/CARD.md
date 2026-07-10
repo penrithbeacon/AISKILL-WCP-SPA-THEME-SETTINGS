@@ -2,7 +2,7 @@
 
 Embed WCP theme switching (Settings modal, .wcpt import, URL sharing, seasonal collections) into any WCP-compliant SPA
 
-**Version:** 2.0.1
+**Version:** 2.0.2
 **Author:** Anthony Harrison
 **License:** MIT
 **Package ID:** `com.penrithbeacon.wcp-spa-theme-settings`

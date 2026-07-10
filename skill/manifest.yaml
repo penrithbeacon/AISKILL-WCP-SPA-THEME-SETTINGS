@@ -1,11 +1,12 @@
 name: WCP SPA Theme Settings
 id: com.penrithbeacon.wcp-spa-theme-settings
 uuid: 515af161-bbcc-4170-a376-7b8f74480849
-version: 2.0.1
+version: 2.0.2
 description: Embed WCP theme switching (Settings modal, .wcpt import, URL sharing, seasonal collections) into any WCP-compliant SPA
 author: Anthony Harrison
 authorEmail: anthony@harrisonofthenorth.com
 entry: SKILL.md
+system_protocol_version: "1.0.0"
 license: MIT
 minimum_runtime: "1.0.0"
 wcpVersion: "2.2.1"
@@ -22,6 +23,10 @@ tags:
   - collections
 type: procedural
 changelog:
+  - version: 2.0.2
+    changes:
+      - "BREAKING: SYSTEM.md is now a fourth REQUIRED package file (.aiskill spec v2.2.0) — an invariant, versioned verification protocol every AI agent must follow before executing SKILL.md — packages built before this version lack it and no longer conform"
+      - "New required manifest field system_protocol_version, declaring which SYSTEM.md version this package ships"
   - version: 2.0.1
     changes:
       - Bundled skill/LICENSE.txt (MIT) — conforms to the v2.1.0 .aiskill spec's optional bundled license file
